@@ -1,0 +1,12 @@
+<h2>Subir nuevo pago</h2>
+<input type="file" (change)="onFileChange($event)">
+<input type="number" [(ngModel)]="cantidad" placeholder="Cantidad">
+<input type="date" [(ngModel)]="fecha">
+<select [(ngModel)]="tipo">
+  <option value="EFECTIVO">Efectivo</option>
+  <option value="CHEQUE">Cheque</option>
+  <option value="TRANSFERENCIA">Transferencia</option>
+  <option value="DEPOSITO">Depósito</option>
+</select>
+<input type="text" [(ngModel)]="codigoEstudiante" placeholder="Código estudiante">
+<button (click)="enviarPago()">Enviar</button>

@@ -1,0 +1,30 @@
+<h4>Listado de Estudiantes</h4>
+
+<table class="tabla" *ngIf="estudiantes.length > 0; else noData">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Código</th>
+      <th>Programa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let estudiante of estudiantes | paginate: { itemsPerPage: 10, currentPage: pageEstudiantes, id: 'estudiantes-pagination' }">
+      <td>{{ estudiante.nombre }}</td>
+      <td>{{ estudiante.apellido }}</td>
+      <td>{{ estudiante.codigo }}</td>
+      <td>{{ estudiante.programaId }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<pagination-controls
+  *ngIf="estudiantes.length > 10"
+  id="estudiantes-pagination"
+  (pageChange)="pageEstudiantes = $event">
+</pagination-controls>
+
+<ng-template #noData>
+  <p style="text-align: center; color: #777;">No hay estudiantes registrados.</p>
+</ng-template>

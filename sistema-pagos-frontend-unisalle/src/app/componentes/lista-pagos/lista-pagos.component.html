@@ -1,0 +1,34 @@
+<h4>Listado de Pagos</h4>
+
+<table class="tabla" *ngIf="pagos.length > 0; else noPagos">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Estudiante</th>
+      <th>Fecha</th>
+      <th>Cantidad</th>
+      <th>Tipo</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pago of pagos | paginate: { itemsPerPage: 10, currentPage: pagePagos, id: 'pagos-pagination' }">
+      <td>{{ pago.id }}</td>
+      <td>{{ pago.estudiante?.nombre }} {{ pago.estudiante?.apellido }}</td>
+      <td>{{ pago.fecha }}</td>
+      <td>${{ pago.cantidad }}</td>
+      <td>{{ pago.type }}</td>
+      <td>{{ pago.status }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<pagination-controls
+  *ngIf="pagos.length > 10"
+  id="pagos-pagination"
+  (pageChange)="pagePagos = $event">
+</pagination-controls>
+
+<ng-template #noPagos>
+  <p style="text-align: center; color: #777;">No hay pagos registrados.</p>
+</ng-template>

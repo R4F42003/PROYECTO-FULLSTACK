@@ -1,0 +1,8 @@
+<h2>Actualizar estado del pago</h2>
+<input type="number" [(ngModel)]="idPago" placeholder="ID del pago">
+<select [(ngModel)]="status">
+  <option value="CREADO">Creado</option>
+  <option value="VALIDADO">Validado</option>
+  <option value="RECHAZADO">Rechazado</option>
+</select>
+<button (click)="actualizar()">Actualizar</button>
