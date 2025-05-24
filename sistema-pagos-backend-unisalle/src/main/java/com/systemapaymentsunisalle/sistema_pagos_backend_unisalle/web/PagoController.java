@@ -129,7 +129,7 @@ public class PagoController {
     // ===================================
     // MÉTODO PARA DESCARGAR ARCHIVO DE UN PAGO
     // ===================================
-
+    
     // Método que devuelve el archivo asociado a un pago en formato PDF
     @GetMapping(value = "/pagoFile/{pagoId}", produces = MediaType.APPLICATION_PDF_VALUE)
     public byte[] listarArchivoPorId(@PathVariable Long pagoId) throws IOException {
